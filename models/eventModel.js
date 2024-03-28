@@ -18,7 +18,9 @@ class Event {
               "places": ["85923179"],
               "dates": ["current_future"],
               "dedup": true
-            }
+            },
+            "expand.destination_event":["primary_venue","image","ticket_availability","saves","event_sales_status","primary_organizer","public_collections"],
+            "browse_surface":"homepage"
           })
         })
         if (!response.ok) throw new Error(`Failed to fetch events, status code: ${response.status}`);

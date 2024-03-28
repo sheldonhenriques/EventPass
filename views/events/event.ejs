@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events</title>
+  <title>EventPass</title>
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
   <h1>Events</h1>
-  <ul>
+  <div class="event-list">
     <% events.forEach(event => { %>
-      <li>
-        <h2><%= event.name %></h2>
-        <p><%= event.summary %></p>
-      </li>
-    <% }); %>
-  </ul>
+      <%- include('event-card', { event: event }) -%>
+    <% }) %>
+  </div>
 </body>
 </html>

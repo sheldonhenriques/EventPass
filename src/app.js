@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require('path');
 const EventController = require('../controllers/eventController');
 
 const app = express();
@@ -11,6 +12,15 @@ app.use(express.static("./public"));
 
 app.use(express.json()); // to support JSON-encoded bodies
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '1d',
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+  }
+}));
 
 const EVENTBRITE_TOKEN = process.env.EVENTBRITE_TOKEN;
 const eventController = new EventController(EVENTBRITE_TOKEN);
