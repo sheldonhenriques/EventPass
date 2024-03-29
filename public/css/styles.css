@@ -39,6 +39,14 @@ body {
     object-fit: cover;
     object-position: center;
   }
+
+  .zoom-image {
+    transition: transform 0.3s ease;
+  }
+  
+  .zoom-image:hover {
+    transform: scale(1.15);
+  }
   
   .event-details {
     padding: 10px;
