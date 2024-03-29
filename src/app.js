@@ -28,6 +28,9 @@ const eventController = new EventController(SEATGEEK_CLIENT_ID, SEATGEEK_SECRET_
 
 app.get('/', (req, res) => eventController.getEvents(req, res));
 
+app.get('/events', (req, res) => eventController.getEventsPagination(req, res));
+
+
 app.listen(port, () => {
   console.log({
     level: "info",
