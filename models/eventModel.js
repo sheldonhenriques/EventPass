@@ -1,31 +1,21 @@
 class Event {
-  constructor(token) {
-    this.token = token;
+  constructor(SEATGEEK_CLIENT_ID, SEATGEEK_SECRET_TOKEN) {
+    this.SEATGEEK_CLIENT_ID = SEATGEEK_CLIENT_ID;
+    this.SEATGEEK_SECRET_TOKEN = SEATGEEK_SECRET_TOKEN;
   }
 
-  async getEvents() {
+  async getEvents(continuationToken = '') {
     try {
-        const response = await fetch('https://www.eventbriteapi.com/v3/destination/search/', {
-          method: 'POST',
+        const token = 'Basic ' + Buffer.from(this.SEATGEEK_CLIENT_ID + ':' + this.SEATGEEK_SECRET_TOKEN).toString('base64');
+        const response = await fetch('https://api.seatgeek.com/2/events', {
+          method: 'GET',
           headers: {
-            Authorization: `Bearer ${this.token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            "event_search": {
-              "page_size": 30,
-              "image": true,
-              "places": ["85923179"],
-              "dates": ["current_future"],
-              "dedup": true
-            },
-            "expand.destination_event":["primary_venue","image","ticket_availability","saves","event_sales_status","primary_organizer","public_collections"],
-            "browse_surface":"homepage"
-          })
+            Authorization:  token
+          }
         })
         if (!response.ok) throw new Error(`Failed to fetch events, status code: ${response.status}`);
         const eventData = await response.json();
-        return eventData.events;
+        return eventData;
     } catch (error) {
       console.error('Error fetching events:', error);
       throw error;

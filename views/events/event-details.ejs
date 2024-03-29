@@ -1,16 +1,18 @@
 <div class="event-details">
-    <h2 class="event-name"><%= event.name %></h2>
-    <p class="event-date">
+  <h2 class="event-name"><%= event.title %></h2>
+  <p class="event-date">
+    <% if(event.time_tbd) { %>
       <%= event.startDateFormatted %>
-    </p>
-    <p class="event-venue"><%= event.primary_venue.name %> - <%= event.primary_venue.address.localized_area_display %></p>
-    <p class="event-price">
-      <% if (event.ticket_availability.is_free) { %>
-        Free
-      <% } else { %>
-        From $<%= event.ticket_availability.minimum_ticket_price.major_value %>
-      <% } %>
-      <%- include('event-organizer', { event: event }) -%>
-    </p>
-  </div>
-  
+    <% } else { %>
+      <%= event.startDateTimeFormatted %>
+    <% } %>
+  </p>
+  <p class="event-venue"><%= event.venue.name %> - <%= event.venue.city %></p>
+  <p class="event-price">
+    <% if (event.stats.lowest_price === null) { %>
+      Free
+    <% } else { %>
+      From $<%= event.stats.lowest_price %>
+    <% } %>
+  </p>
+</div>

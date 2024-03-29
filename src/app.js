@@ -22,8 +22,9 @@ app.use(express.static(path.join(__dirname, 'public'), {
   }
 }));
 
-const EVENTBRITE_TOKEN = process.env.EVENTBRITE_TOKEN;
-const eventController = new EventController(EVENTBRITE_TOKEN);
+const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID;
+const SEATGEEK_SECRET_TOKEN = process.env.SEATGEEK_SECRET_TOKEN;
+const eventController = new EventController(SEATGEEK_CLIENT_ID, SEATGEEK_SECRET_TOKEN);
 
 app.get('/', (req, res) => eventController.getEvents(req, res));
 
