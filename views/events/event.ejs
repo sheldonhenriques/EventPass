@@ -11,7 +11,9 @@
   <div class="event-list">
     <%- include('event-paginated', { events: events }) -%>
   </div>
-  <button id="load-more-btn" class="load-more-btn">Load More</button>
+    <% if (paginated) { %>
+    <button id="load-more-btn" class="load-more-btn">Load More</button>
+    <% } %>
   <script src="/js/app.js"></script>
 </body>
 </html>

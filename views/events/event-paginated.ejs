@@ -1,3 +1,7 @@
 <% events.forEach(event => { %>
-    <%- include('event-card', { event: event }) -%>
+    <% if (event.event) { %>
+      <%- include('event-card', { event: event.event }) -%>
+    <% } else { %>
+      <%- include('event-card', { event: event }) -%>
+    <% } %>
   <% }) %>

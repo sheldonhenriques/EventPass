@@ -30,6 +30,9 @@ app.get('/', (req, res) => eventController.getEvents(req, res));
 
 app.get('/events', (req, res) => eventController.getEventsPagination(req, res));
 
+app.get('/eventsRecommendations', (req, res) => eventController.getEventsRecommendations(req, res));
+
+
 
 app.listen(port, () => {
   console.log({

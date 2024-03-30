@@ -2,7 +2,7 @@
   <h2 class="event-name"><%= event.title %></h2>
   <p class="event-date">
     <% if(event.time_tbd) { %>
-      <%= event.startDateFormatted %>
+      <%= event.startDateFormatted %> • TBD
     <% } else { %>
       <%= event.startDateTimeFormatted %>
     <% } %>
@@ -10,7 +10,7 @@
   <p class="event-venue"><%= event.venue.name %> - <%= event.venue.city %></p>
   <p class="event-price">
     <% if (event.stats.lowest_price === null) { %>
-      Free
+      Find Tickets
     <% } else { %>
       From $<%= event.stats.lowest_price %>
     <% } %>

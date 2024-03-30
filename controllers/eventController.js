@@ -14,7 +14,7 @@ class EventController {
         event.startDateFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D');
         event.startDateTimeFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D • h:mm A');
       });
-      res.render('./events/event', { events: eventData.events});
+      res.render('./events/event', { events: eventData.events, paginated: true});
     } catch (error) {
       res.status(500).send(error);
     }
@@ -25,12 +25,28 @@ class EventController {
       const page = parseInt(req.query.page) || 1;
       const per_page = parseInt(req.query.per_page) || 10;
       const eventData = await this.event.getEvents(page, per_page);
-      res.render('./events/event-paginated', { events: eventData.events}, (err, html) => {
+      res.render('./events/event-paginated', { events: eventData.events, paginated: true}, (err, html) => {
         if (err)  throw err;
         else  res.send(html);
     });
     } catch (error) {
       res.status(500).json({ error: error.message });
+    }
+  }
+
+  async getEventsRecommendations(req, res) {
+    try {
+      const event_id = req.query.event_id;
+      const eventData = await this.event.getEventsRecommendations(event_id);
+      console.log(eventData, event_id)
+      eventData.recommendations.forEach(event => {
+        event.startDateFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D');
+        event.startDateTimeFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D • h:mm A');
+      });
+      console.log(eventData);
+      res.render('./events/event', { events: eventData.recommendations, paginated: false });
+    } catch (error) {
+      res.status(500).send(error);
     }
   }
 }
