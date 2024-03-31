@@ -38,6 +38,7 @@ app.get('/eventsPagination', (req, res) => eventController.getEventsPagination(r
 
 app.get('/eventsRecommendations', (req, res) => eventController.getEventsRecommendations(req, res));
 
+app.get('/categories', (req, res) => eventController.getEventCategories(req, res));
 
 
 app.listen(port, () => {

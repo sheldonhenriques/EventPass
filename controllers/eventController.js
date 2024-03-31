@@ -38,13 +38,20 @@ class EventController {
     try {
       const event_id = req.query.event_id;
       const eventData = await this.event.getEventsRecommendations(event_id);
-      console.log(eventData, event_id)
       eventData.recommendations.forEach(event => {
         event.startDateFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D');
         event.startDateTimeFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D • h:mm A');
       });
-      console.log(eventData);
       res.render('./events/event', { events: eventData.recommendations, paginated: false });
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async getEventCategories(req, res) {
+    try {
+      const categoriesData = await this.event.getEventsCategories();
+      res.render('./categories/category', { categories: categoriesData.taxonomies.slice(0, 6) });
     } catch (error) {
       res.status(500).send(error);
     }

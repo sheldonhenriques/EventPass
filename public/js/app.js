@@ -17,3 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
       loadMoreButton.style.display = 'block';
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("/categories")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("categoriesContainer").innerHTML = data;
+    })
+    .catch(error => console.error("Error fetching categories:", error));
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("/events")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("eventsContainer").innerHTML = data;
+    })
+    .catch(error => console.error("Error fetching categories:", error));
+});
