@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       loadMoreButton.style.display = 'none';
   
       // Fetch more events from the server
-      const response = await fetch(`/events?page=${page}`);
+      const response = await fetch(`/eventsPagination?page=${page}`);
       const eventList = document.querySelector('.event-list');
       eventList.insertAdjacentHTML('beforeend', await response.text());
 
