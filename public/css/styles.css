@@ -28,29 +28,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
-  
-  .event-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    width: 300px;
-    overflow: hidden;
-  }
-
-  .event-image {
-    max-width: 100%;
-    max-height: 200px;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .event-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
 
   .zoom-image {
     transition: transform 0.3s ease;
@@ -91,51 +68,8 @@ body {
     align-items: center;
   }
   
-  .event-organizer {
-    font-size: 15px;
-    color: #666;
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .event-organizer svg {
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-    flex-shrink: 0;
-  }
-
-  .load-more-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .load-more-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .loader {
-    border: 4px solid #f3f3f3; /* Light grey */
-    border-top: 4px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    display: none; /* Initially hidden */
-    margin: 20px auto;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  #loader {
+    display: none;
   }
 
   .logo {
@@ -185,8 +119,4 @@ body {
     font-size: 16px;
     color: white;
     text-shadow: 1px 1px 2px black;
-}
-
-.left-align {
-  text-align: left;
 }

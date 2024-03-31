@@ -1,4 +1,6 @@
-<div class="event-card">
+<div class="card mb-3" style="width: 300px; margin: 10px;">
   <%- include('event-image', { event: event }) -%>
-  <%- include('event-details', { event: event }) -%>
+  <div class="card-body">
+    <%- include('event-details', { event: event }) -%>
+  </div>
 </div>
