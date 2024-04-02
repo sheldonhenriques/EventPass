@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category Template renders categories correctly 1`] = `
+"<div class="container my-4">
+    <h1 class="mb-4 text-left"><b>Categories</b></h1>
+    <div class="categories-container d-flex overflow-auto">
+      
+        <div class="category-item flex-shrink-0 mr-3">
+          <img src="category1.jpg" alt="Category 1">
+          <h3>Category 1</h3>
+        </div>
+      
+        <div class="category-item flex-shrink-0 mr-3">
+          <img src="category2.jpg" alt="Category 2">
+          <h3>Category 2</h3>
+        </div>
+      
+    </div>
+  </div>"
+`;
