@@ -40,6 +40,10 @@ app.get('/eventsRecommendations', (req, res) => eventController.getEventsRecomme
 
 app.get('/categories', (req, res) => eventController.getEventCategories(req, res));
 
+app.post('/search', (req, res) => eventController.getSearchEvents(req, res));
+
+app.get('/indexMain', (req, res) => indextController.getIndexMain(req, res));
+
 
 app.listen(port, () => {
   console.log({

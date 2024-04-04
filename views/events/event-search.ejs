@@ -1,0 +1,12 @@
+<div class="container my-4">
+    <h1 class="mb-4 text-left"><b>Search result's for '<%= searchTerm %>'</b></h1>
+    <% if (events.length > 0) { %>
+        <div class="event-list">
+            <%- include('event-paginated', { events: events }) -%>
+          </div>
+      <% } else { %>
+        <p>No results found.</p>
+      <% } %>
+    
+  </div>
+  
