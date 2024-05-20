@@ -1,0 +1,12 @@
+<div class="container my-4">
+  <h1 class="mb-4 text-left"><b>Events</b></h1>
+  <div class="event-list">
+    <%- include('event-paginated', { events: events }) -%>
+  </div>
+    <% if (paginated) { %>
+      <div class="d-flex justify-content-center">
+        <button id="load-more-btn" class="btn btn-primary">Load More</button>
+        <div id="loader" class="spinner-border text-primary" role="status"></div>
+      </div>
+    <% } %>
+</div>

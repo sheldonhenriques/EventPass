@@ -15,7 +15,7 @@ class EventController {
         event.startDateFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D');
         event.startDateTimeFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D • h:mm A');
       });
-      res.render('./events/event', { events: eventData.events, paginated: true});
+      res.render('./events/events', { events: eventData.events, paginated: true});
     } catch (error) {
       res.status(500).send(error);
     }
@@ -47,7 +47,7 @@ class EventController {
         event.startDateFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D');
         event.startDateTimeFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D • h:mm A');
       });
-      res.render('./events/event', { events: eventData.recommendations, paginated: false });
+      res.render('./events/events', { events: eventData.recommendations, paginated: false });
     } catch (error) {
       res.status(500).send(error);
     }
@@ -71,6 +71,20 @@ class EventController {
       });
       const eventData = await this.event.getSearchEvents(sanitizedSearchTerm);
       res.render('./events/event-search', { events: eventData.events, paginated: true, searchTerm });
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async getEvent(req, res) {
+    try {
+      const id = req.query.id;
+      const eventData = await this.event.getEvents(1,1,id);
+      eventData.events.forEach(event => {
+        event.startDateFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D');
+        event.startDateTimeFormatted = moment.tz(event.datetime_local, this.timezone).format('ddd, MMM D • h:mm A');
+      });
+      res.render('./events/event', { event: eventData.events[0], paginated: false});
     } catch (error) {
       res.status(500).send(error);
     }
