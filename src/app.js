@@ -44,6 +44,9 @@ app.post('/search', (req, res) => eventController.getSearchEvents(req, res));
 
 app.get('/indexMain', (req, res) => indextController.getIndexMain(req, res));
 
+app.get('/event', (req, res) => eventController.getEvent(req, res));
+
+
 
 app.listen(port, () => {
   console.log({

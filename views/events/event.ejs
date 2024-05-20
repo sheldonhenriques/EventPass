@@ -1,12 +1,29 @@
-<div class="container my-4">
-  <h1 class="mb-4 text-left"><b>Events</b></h1>
-  <div class="event-list">
-    <%- include('event-paginated', { events: events }) -%>
-  </div>
-    <% if (paginated) { %>
-      <div class="d-flex justify-content-center">
-        <button id="load-more-btn" class="btn btn-primary">Load More</button>
-        <div id="loader" class="spinner-border text-primary" role="status"></div>
-      </div>
-    <% } %>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main>
+    <!-- <img src="<%= event.performers[0].image %>" loading="lazy" alt="<%= event.short_title %>" class=" w-100 vh-100"> -->
+    <div class="hero-image-container">
+      <div class="blur-background"></div>
+      <img src="<%= event.performers[0].image %>" loading="lazy" alt="<%= event.short_title %>" class="hero-image">
+    </div>
+    <h1><%= event.title %></h1>
+    <p><%= event.description %></p>
+ 
+    <section>
+      <h2><% if(event.time_tbd) { %>
+        <%= event.startDateFormatted %> • TBD
+      <% } else { %>
+        <%= event.startDateTimeFormatted %>
+      <% } %></h2>
+      <p class="event-venue"><%= event.venue.name %> - <%= event.venue.city %></p>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -19,7 +19,7 @@ body {
   
   h1 {
     color: #333;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
   }
   
@@ -119,4 +119,28 @@ body {
     font-size: 16px;
     color: white;
     text-shadow: 1px 1px 2px black;
+}
+
+.hero-image-container {
+  height: 600px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+.hero-image {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the opacity as needed */
+  filter: blur(10px); /* Adjust the blur amount as needed */
 }
